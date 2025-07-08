@@ -73,7 +73,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
       {/* Third row - ENTER + 7 keys + DELETE */}
       <div className="flex justify-center gap-0.5">
         <Key width={48} value="ENTER" onClick={onClick}>
-          <span className="text-xs font-bold">ENTER</span>
+          <span className="text-sm font-bold">ENTER</span>
         </Key>
         
         {['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map((key) => (
@@ -87,7 +87,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
         ))}
         
         <Key width={48} value="DELETE" onClick={onClick}>
-          <span className="text-xs font-bold">⌫</span>
+          <span className="text-sm font-bold">⌫</span>
         </Key>
       </div>
     </div>

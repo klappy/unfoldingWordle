@@ -57,7 +57,7 @@ export const Key = ({
 
   return (
     <button
-      className={`${classes} h-10 sm:h-12 lg:h-14 text-xs sm:text-sm`}
+      className={`${classes} h-10 sm:h-12 lg:h-14 text-sm sm:text-base`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       aria-label={`Key ${children || value}`}
