@@ -7,6 +7,7 @@ import { Keyboard } from './components/keyboard/Keyboard'
 import { AboutModal } from './components/modals/AboutModal'
 import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
+import { DarkModeToggle } from './components/DarkModeToggle'
 import { WIN_MESSAGES } from './constants/strings'
 import { isWordInWordList, isWinningWord, solution } from './lib/words'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
@@ -14,7 +15,6 @@ import {
   loadGameStateFromLocalStorage,
   saveGameStateToLocalStorage,
 } from './lib/localStorage'
-// import { relative } from 'path/posix'
 
 const ALERT_TIME_MS = 2000
 
@@ -113,65 +113,88 @@ function App() {
   }
 
   return (
-    <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="flex w-80 mx-auto items-center mb-8">
-        <div className="grow" style={{ fontFamily: 'Avenir' }}>
-          <a
-            href="https://www.unfoldingword.org"
-            className=""
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="./logo192.png"
-              alt="logo"
-              style={{
-                width: '50px',
-                display: 'inline',
-                marginRight: '-2px',
-                float: 'left',
-              }}
-            />
-            <h1 className="text-xl font-bold">
-              <span style={{ fontSize: '1.2em' }}>
-                <span style={{ fontWeight: 400 }}>unfolding</span>
-                <span style={{ color: '#31ADE3' }}>Word</span>le
-                <span
-                  style={{
-                    fontWeight: 100,
-                    fontSize: '0.5em',
-                    position: 'relative',
-                    top: '-1em',
-                  }}
-                >
-                  ™
-                </span>
-              </span>
-            </h1>
-          </a>
-          <p
-            className="text-sm italic tracking-wider grow"
-            style={{ fontSize: '0.91em' }}
-          >
-            A Daily Bible Word Game
-          </p>
-        </div>
-        <InformationCircleIcon
-          className="h-6 w-6 cursor-pointer"
-          onClick={() => setIsInfoModalOpen(true)}
-        />
-        <ChartBarIcon
-          className="h-6 w-6 cursor-pointer"
-          onClick={() => setIsStatsModalOpen(true)}
-        />
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300/20 dark:bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-300/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
       </div>
-      <Grid guesses={guesses} currentGuess={currentGuess} />
-      <Keyboard
-        onChar={onChar}
-        onDelete={onDelete}
-        onEnter={onEnter}
-        guesses={guesses}
-      />
+
+      <div className="relative z-10 max-w-lg mx-auto px-4 py-8">
+        {/* Header */}
+        <header className="glass-card rounded-2xl p-6 mb-8 animate-fade-in">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="relative">
+                <img
+                  src="./logo192.png"
+                  alt="logo"
+                  className="w-12 h-12 rounded-xl shadow-lg floating-animation"
+                />
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+              </div>
+              <div>
+                <h1 className="text-2xl font-display font-bold text-gradient">
+                  <span className="font-light">unfolding</span>
+                  <span className="font-bold">Word</span>
+                  <span className="font-bold">le</span>
+                  <span className="text-xs font-light align-super opacity-60">™</span>
+                </h1>
+                <p className="text-sm text-slate-600 dark:text-slate-300 font-medium">
+                  A Daily Bible Word Game
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <DarkModeToggle />
+              <button
+                onClick={() => setIsInfoModalOpen(true)}
+                className="glass-button rounded-xl p-3 transition-all duration-200 hover:scale-105 active:scale-95 group"
+              >
+                <InformationCircleIcon className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+              </button>
+              <button
+                onClick={() => setIsStatsModalOpen(true)}
+                className="glass-button rounded-xl p-3 transition-all duration-200 hover:scale-105 active:scale-95 group"
+              >
+                <ChartBarIcon className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+              </button>
+            </div>
+          </div>
+        </header>
+
+        {/* Game Area */}
+        <main className="space-y-6">
+          {/* Grid Container */}
+          <div className="glass-card rounded-2xl p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <Grid guesses={guesses} currentGuess={currentGuess} />
+          </div>
+
+          {/* Keyboard Container */}
+          <div className="glass-card rounded-2xl p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <Keyboard
+              onChar={onChar}
+              onDelete={onDelete}
+              onEnter={onEnter}
+              guesses={guesses}
+            />
+          </div>
+        </main>
+
+        {/* About Button */}
+        <div className="text-center mt-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <button
+            onClick={() => setIsAboutModalOpen(true)}
+            className="glass-button rounded-xl px-6 py-3 text-sm font-medium text-slate-700 dark:text-slate-300 transition-all duration-200 hover:scale-105 active:scale-95 group"
+          >
+            <span className="inline mr-2 group-hover:text-blue-600 dark:group-hover:text-blue-400">✨</span>
+            About this game
+          </button>
+        </div>
+      </div>
+
+      {/* Modals */}
       <InfoModal
         isOpen={isInfoModalOpen}
         handleClose={() => setIsInfoModalOpen(false)}
@@ -193,14 +216,7 @@ function App() {
         handleClose={() => setIsAboutModalOpen(false)}
       />
 
-      <button
-        type="button"
-        className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 select-none"
-        onClick={() => setIsAboutModalOpen(true)}
-      >
-        About this game
-      </button>
-
+      {/* Alerts */}
       <Alert message="Not enough letters" isOpen={isNotEnoughLetters} />
       <Alert
         message="Word not found in the unfoldingWord English ULT."
