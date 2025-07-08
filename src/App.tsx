@@ -114,65 +114,66 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-      {/* Background decorative elements */}
+      {/* Background decorative elements - smaller on mobile */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-300/20 dark:bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-300/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-blue-300/20 dark:bg-blue-600/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute top-3/4 right-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-purple-300/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="relative z-10 max-w-lg mx-auto px-4 py-8">
-        {/* Header */}
-        <header className="glass-card rounded-2xl p-6 mb-8 animate-fade-in">
+      {/* Mobile-first responsive container */}
+      <div className="relative z-10 max-w-sm sm:max-w-md lg:max-w-lg mx-auto px-3 sm:px-4 py-4 sm:py-8">
+        {/* Header - more compact on mobile */}
+        <header className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-8 animate-fade-in">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <div className="relative">
                 <img
                   src="./logo192.png"
                   alt="logo"
-                  className="w-12 h-12 rounded-xl shadow-lg floating-animation"
+                  className="w-8 h-8 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl shadow-lg floating-animation"
                 />
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+                <div className="absolute -top-0.5 -right-0.5 sm:-top-1 sm:-right-1 w-3 h-3 sm:w-4 sm:h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
               </div>
               <div>
-                <h1 className="text-2xl font-display font-bold text-gradient">
+                <h1 className="text-lg sm:text-2xl font-display font-bold text-gradient">
                   <span className="font-light">unfolding</span>
                   <span className="font-bold">Word</span>
                   <span className="font-bold">le</span>
                   <span className="text-xs font-light align-super opacity-60">™</span>
                 </h1>
-                <p className="text-sm text-slate-600 dark:text-slate-300 font-medium">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
                   A Daily Bible Word Game
                 </p>
               </div>
             </div>
             
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 sm:space-x-2">
               <DarkModeToggle />
               <button
                 onClick={() => setIsInfoModalOpen(true)}
-                className="glass-button rounded-xl p-3 transition-all duration-200 hover:scale-105 active:scale-95 group"
+                className="glass-button rounded-lg sm:rounded-xl p-2 sm:p-3 transition-all duration-200 hover:scale-105 active:scale-95 group"
               >
-                <InformationCircleIcon className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+                <InformationCircleIcon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
               </button>
               <button
                 onClick={() => setIsStatsModalOpen(true)}
-                className="glass-button rounded-xl p-3 transition-all duration-200 hover:scale-105 active:scale-95 group"
+                className="glass-button rounded-lg sm:rounded-xl p-2 sm:p-3 transition-all duration-200 hover:scale-105 active:scale-95 group"
               >
-                <ChartBarIcon className="w-5 h-5 text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
+                <ChartBarIcon className="w-4 h-4 sm:w-5 sm:h-5 text-slate-700 dark:text-slate-300 group-hover:text-blue-600 dark:group-hover:text-blue-400" />
               </button>
             </div>
           </div>
         </header>
 
-        {/* Game Area */}
-        <main className="space-y-6">
-          {/* Grid Container */}
-          <div className="glass-card rounded-2xl p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+        {/* Game Area - reduced spacing on mobile */}
+        <main className="space-y-3 sm:space-y-6">
+          {/* Grid Container - less padding on mobile */}
+          <div className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-6 animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <Grid guesses={guesses} currentGuess={currentGuess} />
           </div>
 
-          {/* Keyboard Container */}
-          <div className="glass-card rounded-2xl p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          {/* Keyboard Container - less padding on mobile */}
+          <div className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <Keyboard
               onChar={onChar}
               onDelete={onDelete}
@@ -182,11 +183,11 @@ function App() {
           </div>
         </main>
 
-        {/* About Button */}
-        <div className="text-center mt-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+        {/* About Button - smaller on mobile */}
+        <div className="text-center mt-4 sm:mt-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
           <button
             onClick={() => setIsAboutModalOpen(true)}
-            className="glass-button rounded-xl px-6 py-3 text-sm font-medium text-slate-700 dark:text-slate-300 transition-all duration-200 hover:scale-105 active:scale-95 group"
+            className="glass-button rounded-lg sm:rounded-xl px-4 py-2 sm:px-6 sm:py-3 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 transition-all duration-200 hover:scale-105 active:scale-95 group"
           >
             <span className="inline mr-2 group-hover:text-blue-600 dark:group-hover:text-blue-400">✨</span>
             About this game

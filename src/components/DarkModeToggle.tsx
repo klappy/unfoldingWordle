@@ -26,13 +26,13 @@ export const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleDarkMode}
-      className="glass-button rounded-xl p-3 transition-all duration-200 hover:scale-105 active:scale-95 group"
+      className="glass-button rounded-lg sm:rounded-xl p-2 sm:p-3 transition-all duration-200 hover:scale-105 active:scale-95 group"
       aria-label="Toggle dark mode"
     >
-      <div className="relative w-5 h-5">
+      <div className="relative w-4 h-4 sm:w-5 sm:h-5">
         {/* Sun icon */}
         <svg
-          className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
+          className={`absolute inset-0 w-4 h-4 sm:w-5 sm:h-5 transition-all duration-300 ${
             isDark ? 'opacity-0 rotate-180' : 'opacity-100 rotate-0'
           } text-yellow-500 group-hover:text-yellow-600`}
           fill="currentColor"
@@ -47,7 +47,7 @@ export const DarkModeToggle = () => {
         
         {/* Moon icon */}
         <svg
-          className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${
+          className={`absolute inset-0 w-4 h-4 sm:w-5 sm:h-5 transition-all duration-300 ${
             isDark ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'
           } text-slate-700 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400`}
           fill="currentColor"

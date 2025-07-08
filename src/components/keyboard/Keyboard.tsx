@@ -43,35 +43,37 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
   }, [onEnter, onDelete, onChar])
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-1 sm:space-y-2">
       {/* First row */}
-      <div className="flex justify-center gap-1">
+      <div className="flex justify-center gap-0.5 sm:gap-1">
         {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map((key) => (
           <Key 
             key={key} 
             value={key as KeyValue} 
             onClick={onClick} 
-            status={charStatuses[key]} 
+            status={charStatuses[key]}
+            width={40} // Standard letter key width
           />
         ))}
       </div>
       
       {/* Second row */}
-      <div className="flex justify-center gap-1">
+      <div className="flex justify-center gap-0.5 sm:gap-1">
         {['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map((key) => (
           <Key 
             key={key} 
             value={key as KeyValue} 
             onClick={onClick} 
-            status={charStatuses[key]} 
+            status={charStatuses[key]}
+            width={40} // Standard letter key width
           />
         ))}
       </div>
       
       {/* Third row */}
-      <div className="flex justify-center gap-1">
-        <Key width={68} value="ENTER" onClick={onClick}>
-          <span className="text-xs font-bold">ENTER</span>
+      <div className="flex justify-center gap-0.5 sm:gap-1">
+        <Key width={55} value="ENTER" onClick={onClick}>
+          <span className="text-xs sm:text-sm font-bold">ENTER</span>
         </Key>
         
         {['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map((key) => (
@@ -79,12 +81,13 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
             key={key} 
             value={key as KeyValue} 
             onClick={onClick} 
-            status={charStatuses[key]} 
+            status={charStatuses[key]}
+            width={40} // Standard letter key width
           />
         ))}
         
-        <Key width={68} value="DELETE" onClick={onClick}>
-          <span className="text-xs font-bold">⌫</span>
+        <Key width={55} value="DELETE" onClick={onClick}>
+          <span className="text-xs sm:text-sm font-bold">⌫</span>
         </Key>
       </div>
     </div>

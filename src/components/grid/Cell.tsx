@@ -23,10 +23,11 @@ export const Cell = ({ value, status, delay = 0 }: Props) => {
   }, [value, delay, showValue])
 
   const classes = classnames(
-    'relative w-16 h-16 flex items-center justify-center mx-1 my-1 text-2xl font-bold rounded-xl transition-all duration-300 transform',
+    // Mobile-first responsive sizing
+    'relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center mx-0.5 my-0.5 sm:mx-1 sm:my-1 text-lg sm:text-xl md:text-2xl font-bold rounded-lg sm:rounded-xl transition-all duration-300 transform',
     {
       // Default state
-      'bg-white/70 backdrop-blur-sm border-2 border-slate-200/50 shadow-cell hover:shadow-cell-hover text-slate-700': !status,
+      'bg-white/70 backdrop-blur-sm border border-slate-200/50 sm:border-2 shadow-cell hover:shadow-cell-hover text-slate-700': !status,
       'dark:bg-slate-800/70 dark:border-slate-600/50 dark:text-slate-200': !status,
       
       // With value but no status
@@ -48,7 +49,7 @@ export const Cell = ({ value, status, delay = 0 }: Props) => {
   )
 
   const innerClasses = classnames(
-    'absolute inset-0 rounded-xl flex items-center justify-center',
+    'absolute inset-0 rounded-lg sm:rounded-xl flex items-center justify-center',
     {
       'bg-gradient-to-br from-white/20 to-transparent': status === 'correct' || status === 'present',
       'bg-gradient-to-br from-white/10 to-transparent': status === 'absent',
@@ -74,12 +75,12 @@ export const Cell = ({ value, status, delay = 0 }: Props) => {
         {value}
       </span>
       
-      {/* Decorative elements for special states */}
+      {/* Decorative elements for special states - only show on larger screens */}
       {status === 'correct' && (
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-green-400/20 to-transparent animate-pulse" />
+        <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-gradient-to-br from-green-400/20 to-transparent animate-pulse" />
       )}
       {status === 'present' && (
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-yellow-400/20 to-transparent animate-pulse" />
+        <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-gradient-to-br from-yellow-400/20 to-transparent animate-pulse" />
       )}
     </div>
   )
