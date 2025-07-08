@@ -43,37 +43,37 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
   }, [onEnter, onDelete, onChar])
 
   return (
-    <div className="space-y-1 sm:space-y-2">
-      {/* First row */}
-      <div className="flex justify-center gap-0.5 sm:gap-1">
+    <div className="space-y-1">
+      {/* First row - 10 keys */}
+      <div className="flex justify-center gap-0.5">
         {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map((key) => (
           <Key 
             key={key} 
             value={key as KeyValue} 
             onClick={onClick} 
             status={charStatuses[key]}
-            width={40} // Standard letter key width
+            width={32} // Smaller for mobile fitting
           />
         ))}
       </div>
       
-      {/* Second row */}
-      <div className="flex justify-center gap-0.5 sm:gap-1">
+      {/* Second row - 9 keys */}
+      <div className="flex justify-center gap-0.5">
         {['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'].map((key) => (
           <Key 
             key={key} 
             value={key as KeyValue} 
             onClick={onClick} 
             status={charStatuses[key]}
-            width={40} // Standard letter key width
+            width={32} // Smaller for mobile fitting
           />
         ))}
       </div>
       
-      {/* Third row */}
-      <div className="flex justify-center gap-0.5 sm:gap-1">
-        <Key width={55} value="ENTER" onClick={onClick}>
-          <span className="text-xs sm:text-sm font-bold">ENTER</span>
+      {/* Third row - ENTER + 7 keys + DELETE */}
+      <div className="flex justify-center gap-0.5">
+        <Key width={48} value="ENTER" onClick={onClick}>
+          <span className="text-xs font-bold">ENTER</span>
         </Key>
         
         {['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map((key) => (
@@ -82,12 +82,12 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
             value={key as KeyValue} 
             onClick={onClick} 
             status={charStatuses[key]}
-            width={40} // Standard letter key width
+            width={32} // Smaller for mobile fitting
           />
         ))}
         
-        <Key width={55} value="DELETE" onClick={onClick}>
-          <span className="text-xs sm:text-sm font-bold">⌫</span>
+        <Key width={48} value="DELETE" onClick={onClick}>
+          <span className="text-xs font-bold">⌫</span>
         </Key>
       </div>
     </div>
