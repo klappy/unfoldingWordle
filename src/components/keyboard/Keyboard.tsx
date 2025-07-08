@@ -52,7 +52,7 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
             value={key as KeyValue} 
             onClick={onClick} 
             status={charStatuses[key]}
-            width={32} // Smaller for mobile fitting
+            width={36} // Slightly bigger for better readability
           />
         ))}
       </div>
@@ -65,14 +65,14 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
             value={key as KeyValue} 
             onClick={onClick} 
             status={charStatuses[key]}
-            width={32} // Smaller for mobile fitting
+            width={36} // Slightly bigger for better readability
           />
         ))}
       </div>
       
       {/* Third row - ENTER + 7 keys + DELETE */}
       <div className="flex justify-center gap-0.5">
-        <Key width={48} value="ENTER" onClick={onClick}>
+        <Key width={52} value="ENTER" onClick={onClick}>
           <span className="text-sm font-bold">ENTER</span>
         </Key>
         
@@ -82,11 +82,11 @@ export const Keyboard = ({ onChar, onDelete, onEnter, guesses }: Props) => {
             value={key as KeyValue} 
             onClick={onClick} 
             status={charStatuses[key]}
-            width={32} // Smaller for mobile fitting
+            width={36} // Slightly bigger for better readability
           />
         ))}
         
-        <Key width={48} value="DELETE" onClick={onClick}>
+        <Key width={52} value="DELETE" onClick={onClick}>
           <span className="text-sm font-bold">⌫</span>
         </Key>
       </div>

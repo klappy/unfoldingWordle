@@ -52,12 +52,12 @@ export const Key = ({
     }
   }
 
-  // Mobile-first responsive sizing - much smaller base sizes
-  const mobileWidth = width === 32 ? 24 : width === 48 ? 36 : width * 0.75 // Regular keys: 24px, special keys: 36px
+  // Mobile-first responsive sizing - optimized for readability
+  const mobileWidth = width === 36 ? 28 : width === 52 ? 40 : width * 0.75 // Regular keys: 28px, special keys: 40px
 
   return (
     <button
-      className={`${classes} h-10 sm:h-12 lg:h-14 text-sm sm:text-base`}
+      className={`${classes} h-11 sm:h-12 lg:h-14 text-sm sm:text-base`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       aria-label={`Key ${children || value}`}
