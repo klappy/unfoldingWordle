@@ -61,19 +61,14 @@ export const Key = ({
     }
   }
 
-  // Responsive sizing based on screen size
-  const mobileWidth = Math.max(28, width * 0.7) // Minimum 28px, otherwise 70% of desktop width
-  const tabletWidth = Math.max(32, width * 0.8) // Minimum 32px, otherwise 80% of desktop width
-  const desktopWidth = width
-
   return (
     <button
       style={{ 
-        width: `${mobileWidth}px`, 
-        height: '44px', // Reduced from 58px
-        minWidth: `${mobileWidth}px`,
+        width: `${width}px`, 
+        height: '58px',
+        minWidth: `${width}px`,
       }}
-      className={`${classes} sm:!w-[${tabletWidth}px] sm:!h-[50px] sm:!min-w-[${tabletWidth}px] lg:!w-[${desktopWidth}px] lg:!h-[58px] lg:!min-w-[${desktopWidth}px]`}
+      className={classes}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       aria-label={`Key ${children || value}`}
